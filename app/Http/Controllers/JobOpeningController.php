@@ -15,6 +15,10 @@ class JobOpeningController extends Controller
            
     }
 
+    public function add() {
+        return view('jobopenings.add');
+    }
+
     public function detail($id)
     {
         return "Controller - Job opening details - $id";

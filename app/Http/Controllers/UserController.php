@@ -15,4 +15,36 @@ class UserController extends Controller
             'users' => $data
         ]);
     }
+
+    public function add() {
+        return view('user.add');
+    }
+
+    public function create() {
+        $validator = validator(request()->all(),[
+            'name' =>'required',
+            'email' => 'required',
+            'password' => 'required',
+            'role' => 'required',
+        ]);
+        if($validator->fails()) {
+            return back()->withErrors($validator);
+        }
+
+        $user = new User;
+        $user->name = request()->name;
+        $user->email = request()->email;
+        $user->password = request()->password;
+        $user->phone_no = request()->phone_no;
+        $user->role = request()->role;
+        $user->save();
+        return redirect('/user');
+    }
+
+    public function delete($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+        return redirect('/user')->with('info','User Deleted');
+    }
 }

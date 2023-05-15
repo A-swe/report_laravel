@@ -26,6 +26,10 @@ Route::post('/job-opening/add',[JobOpeningController::class,'create']);
 Route::post('/job-opening/delete/{id}',[JobOpeningController::class,'delete']);
 
 Route::get('/user',[UserController::class,'index']);
+Route::get('/user/add',[UserController::class,'add']);
+Route::post('/user/add',[UserController::class,'create']);
+Route::get('/user/delete/{id}',[UserController::class,'delete']);
+
 Route::get('/report',[ReportController::class,'index']);
 Auth::routes();
 
